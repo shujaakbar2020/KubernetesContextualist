@@ -1,0 +1,13 @@
+from mcp.server.fastmcp import FastMCP
+from src.service import K8sService
+
+def register_pod_tools(mcp: FastMCP, k8s: K8sService):
+    @mcp.tool()
+    async def list_pods(namespace: str = "default") -> str:
+        """List all pods in a namespace with their current status."""
+        try:
+            pods = await k8s.get_pods(namespace)
+            output = [f"{p.metadata.name} | {p.status.phase}" for p in pods.items]
+            return "\n".join(output)
+        except Exception as e:
+            return f"Error: {str(e)}"
