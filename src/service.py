@@ -48,3 +48,9 @@ class Kubernetes:
             return f"Kubernetes API Error: {e.status} {e.reason} - {e.body}"
         except Exception as e:
             return f"Error reading logs: {str(e)}"
+
+    async def get_cluster_events(self) -> str:
+        await self.initialize()
+        async with client.ApiClient() as api:
+            v1 = client.CoreV1Api(api)
+            return await v1.list_cluster_event()

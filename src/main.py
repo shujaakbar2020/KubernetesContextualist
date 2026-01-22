@@ -9,6 +9,7 @@ from mcp.server.fastmcp import FastMCP
 from src.service import Kubernetes
 from src.tools.logs import register_log_tools
 from src.tools.pods import register_pod_tools
+from src.tools.events import register_event_tools
 from src.utils.logger import setup_logging
 
 # Initialize Logging
@@ -20,6 +21,7 @@ k8s_service = Kubernetes()
 # Register the tools
 register_log_tools(mcp, k8s_service)
 register_pod_tools(mcp, k8s_service)
+register_event_tools(mcp, k8s_service)
 
 if __name__ == "__main__":
     mcp.run()
