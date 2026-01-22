@@ -9,9 +9,10 @@ def setup_logging(level: str = "INFO"):
     """
     
     # Standard Python logging sync
+    # Use stderr for MCP servers to avoid corrupting JSON-RPC messages on stdout
     logging.basicConfig(
         format="%(message)s",
-        stream=sys.stdout,
+        stream=sys.stderr,
         level=level,
     )
 
@@ -32,7 +33,7 @@ def setup_logging(level: str = "INFO"):
 
     structlog.configure(
         processors=processors,
-        logger_factory=structlog.PrintLoggerFactory(),
+        logger_factory=structlog.PrintLoggerFactory(file=sys.stderr),  # Use stderr for MCP stdio compatibility
         cache_logger_on_first_use=True,
     )
 

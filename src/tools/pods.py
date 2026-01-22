@@ -1,7 +1,7 @@
 from mcp.server.fastmcp import FastMCP
-from src.service import K8sService
+from src.service import Kubernetes
 
-def register_pod_tools(mcp: FastMCP, k8s: K8sService):
+def register_pod_tools(mcp: FastMCP, k8s: Kubernetes):
     @mcp.tool()
     async def list_pods(namespace: str = "default") -> str:
         """List all pods in a namespace with their current status."""

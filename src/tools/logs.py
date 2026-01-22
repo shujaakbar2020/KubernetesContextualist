@@ -1,7 +1,7 @@
 from mcp.server.fastmcp import FastMCP
-from src.service import K8sService
+from src.service import Kubernetes
 
-def register_log_tools(mcp: FastMCP, k8s: K8sService):
+def register_log_tools(mcp: FastMCP, k8s: Kubernetes):
     @mcp.tool()
     async def get_pod_logs(
         pod_name: str, 
