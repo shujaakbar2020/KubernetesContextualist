@@ -82,6 +82,8 @@ Ensure your kubeconfig is properly configured:
 kubectl config view
 ```
 
+**Note**: Using your admin kubeconfig grants full cluster access, which may be more than necessary for the MCP server's operations.
+
 ## 🛠️ Available Tools
 
 ### 1. `list_pods`
@@ -136,6 +138,10 @@ KubernetesContextualist/
 │   │   └── events.py         # Event-related tools (future)
 │   └── utils/
 │       └── logger.py          # Logging configuration
+├── k8s/
+│   ├── sa.yaml               # Service Account manifest
+│   ├── cluster-role.yaml    # ClusterRole with minimal permissions
+│   └── role-binding.yaml     # ClusterRoleBinding
 ├── pyproject.toml            # Project dependencies and metadata
 ├── uv.lock                   # Dependency lock file
 ├── k8s-mcp.png              # Architecture diagram
@@ -178,10 +184,20 @@ Logging is configured to use stderr (to avoid corrupting JSON-RPC messages on st
 
 ## 🔒 Security Considerations
 
-- The server uses your existing Kubernetes credentials (kubeconfig or service account)
-- Ensure proper RBAC permissions are configured for the operations you need
-- The server runs with the same permissions as your kubeconfig context
-- Logs may contain sensitive information - handle with care
+### Least Privilege Principle
+
+This project follows the principle of least privilege by providing RBAC resources that grant only the minimum permissions required:
+
+- **Read-only access** to pod information (`get`, `list`, `watch` on `pods`)
+- **Read-only access** to pod logs (`get` on `pods/log`)
+- **No write permissions** - cannot create, update, or delete resources
+- **No access** to other resources like nodes, secrets, configmaps, etc.
+
+**What it does NOT grant:**
+- ❌ Write access to any resources
+- ❌ Access to secrets, configmaps, or other resources
+- ❌ Access to nodes or cluster-level resources
+- ❌ Ability to exec into pods or create resources
 
 ## 📝 Dependencies
 
