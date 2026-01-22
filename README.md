@@ -210,10 +210,6 @@ This project follows the principle of least privilege by providing RBAC resource
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📄 License
-
-[Add your license here]
-
 ## 🙏 Acknowledgments
 
 - Built with [FastMCP](https://gofastmcp.com/)
