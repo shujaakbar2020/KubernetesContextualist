@@ -122,6 +122,10 @@ Fetch logs from a specific Kubernetes pod.
 Get the last 50 lines of logs from the kube-controller-manager-minikube pod in kube-system namespace
 ```
 
+### 3. `cluster_events`
+
+Get k8s cluster events.
+
 ## 📁 Project Structure
 
 ```
