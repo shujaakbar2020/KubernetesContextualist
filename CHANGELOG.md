@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.2.1 (2026-01-22)
+
+### Bug Fixes
+
+- Updated README.md
+  ([`53820b9`](https://github.com/shujaakbar2020/KubernetesContextualist/commit/53820b9181e81bacaaa5c2a9004a0cfe3ea23435))
+
+
 ## v1.2.0 (2026-01-22)
 
 ### Features
