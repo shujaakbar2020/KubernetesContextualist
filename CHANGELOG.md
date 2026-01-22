@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.2.0 (2026-01-22)
+
+### Features
+
+- Added new mcp tool
+  ([`ba4bf4a`](https://github.com/shujaakbar2020/KubernetesContextualist/commit/ba4bf4a94858a6c4d2eae2362c4e0ed5248bca71))
+
+
 ## v1.1.2 (2026-01-22)
 
 ### Bug Fixes
