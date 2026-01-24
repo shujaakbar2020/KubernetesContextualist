@@ -11,3 +11,4 @@ wheels/
 src/__pycache__/
 src/tools/__pycache__/
 src/utils/__pycache__/
+.vscode/mcp.json
