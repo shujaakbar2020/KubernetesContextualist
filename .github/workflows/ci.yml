@@ -26,7 +26,16 @@ jobs:
         with:
           github_token: ${{ secrets.GIT_ACTIONS_SECRET }}
 
-      - name: Output Release Version
+      - name: Update pyproject.toml version
         run: |
-          echo "Released version ${{ steps.release.outputs.new_version }}"
-          sed -i 's/^version = ".*"/version = "'"${{ steps.release.outputs.new_version }}"'"/' pyproject.toml
+          VERSION="${{ steps.release.outputs.new_version }}"
+          echo "Updating pyproject.toml to version $VERSION"
+
+          sed -i "s/^version = \".*\"/version = \"$VERSION\"/" pyproject.toml
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add pyproject.toml
+          git commit -m "chore(release): bump version to $VERSION"
+          git push
