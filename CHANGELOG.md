@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.2.3 (2026-01-24)
+
+### Bug Fixes
+
+- Updated github workflow
+  ([`6761e63`](https://github.com/shujaakbar2020/KubernetesContextualist/commit/6761e635050014b4c33799833d4ecca340bf629a))
+
+
 ## v1.2.2 (2026-01-24)
 
 
